@@ -2,8 +2,18 @@
   box-sizing: border-box;
   /* background-color: #f8f8ff; */
   /* background-color: grey; */
+  color: #141414;
+  /* color: pink; */
 }
 
 body > #root > div {
   /* height: 100vh; */
+}
+
+.navLink {
+  color: #c36973;
+  color: #6068f1;
+  text-decoration: none;
+  font-weight: 500;
+  padding-left: 1.5em;
 }

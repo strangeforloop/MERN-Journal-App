@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import { Typography } from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
@@ -18,6 +19,10 @@ const theme = createMuiTheme({
   },
 });
 
+const MenuIcon = styled.div`
+
+`;
+
 const Ul = styled.ul`
   display: flex;
   list-style: none;
@@ -25,12 +30,9 @@ const Ul = styled.ul`
   text-decoration: none;
   justify-content: space-between;
   align-items: center;
+  color: #6068f1;
+  font-weight: 700;
 `;
-
-const Li = styled.li`
-  color: #E7BBE3;
-`;
-
 
 const App = () => {
   const [ data, setData ] = useState([]);
@@ -56,12 +58,16 @@ const App = () => {
           <nav>
             <Ul>
               <div>
-                <li>Anonymous Journal</li>
+                <li style={{
+                  fontSize: '1.4em', color: '#6068f1'}}>Anon Journal</li>
               </div>
+              {/* <Box color="primary" height={38} width={38} borderRadius="50%" display="flex" justifyContent="center" alignItems="center" style={{ backgroundColor: "#6068f1" }}>
+                <i style={{ fontSize: '1.25em' }} class="fas fa-bars"></i>              
+              </Box> */}
               <div>
-                <Link to="/" style={{ fontWeight: '500', textDecoration: 'none', color: 'pink' }}>home</Link>
-                <Link to="/allposts" style={{ fontWeight: '500', textDecoration: 'none', color: 'pink', paddingLeft: '2em' }}>all posts</Link>
-                {/* <li>Random Post</li> */}
+                <Link className="navLink" to="/">home</Link>
+                <Link className="navLink" to="/allposts">all entries</Link>
+                <Link className="navLink" to="/random">random entry</Link>
               </div>
             </Ul>
           </nav>

@@ -7,20 +7,32 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import AllPosts from './AllPosts';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import { positions } from '@material-ui/system';
+import { positions, flexbox } from '@material-ui/system';
 import { TextareaAutosize, Typography } from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
     primary: { 
       main: '#CCD5FF',
-      main: '#FFFFFF',
+      main: '#6068f1',
       contrastText: '#FFFF'
     },
     secondary: {
       main: '#E7BBE3',
     },
   },
+  overrides: {
+    MuiButton: {
+      root: {
+        position: "absolute",
+        bottom: "1em",
+        width: "90%",
+        margin: "auto",
+        padding: "12px",
+        color: "#FFFFFF"
+      }
+    }
+  }
 });
 
 const Heading = styled.h1`
@@ -140,73 +152,53 @@ const Form = ({ history }) => {
 
       <ThemeProvider theme={theme}>
         {/* <Heading>What's On Your Mind?</Heading> */}
-        <Box borderRadius={14} height="70vh" boxShadow={3} p={2} position="relative">
+        <Box borderRadius={14} height="70vh" width="100%" boxShadow={3} p={2} position="relative">
           <form onSubmit={handleSubmit}>
+            <Box display="flex" flexDirection="column">
+              <div>
+                <p>{dateAsString}</p>
+                <TextField
+                  id="standard-full-width"
+                  label="Title"
+                  style={{ marginBottom: '2em' }}
+                  placeholder="Today Is A Beautiful Day"
+                  fullWidth
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  inputProps={{
+                    style: { fontSize: 30 }
+                  }}
+                  // variant="filled"
+                  // variant="h1"
+                  onChange={e => setTitle(e.target.value)}
+                  value={title}
+                />
 
-            <p>{dateAsString}</p>
-
-            <TextField
-              id="standard-full-width"
-              label="Title"
-              style={{ marginBottom: '2em' }}
-              placeholder="Today Is A Beautiful Day"
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              inputProps={{
-                style: { fontSize: 35 }
-              }}
-              // variant="filled"
-              // variant="h1"
-              onChange={e => setTitle(e.target.value)}
-              value={title}
-            />
-
-            <TextField
-              id="standard-full-width"
-              label="Body"
-              style={{ marginBottom: '2em' }}
-              placeholder="My morning began with a crepe and a coffee. It was lovely."
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              rowsMin={1}
-              rowsMax={8}
-              // variant="filled"
-              multiline
-              onChange={e => setBodyText(e.target.value)}
-              value={bodyText}
-
-            />
-            
-            {/* <TextareaAutosize
-              id="standard-full-width"
-              label="Body"
-              style={{ marginBottom: '2em' }}
-              placeholder="Today is a Beautiful Day"
-              // fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              // variant="filled"
-              rowsMin={4}
-              rowsMax={8}
-              style={{ width: 500}}
-              rowsMax={3}
-              multiline
-              onChange={e => setBodyText(e.target.value)}
-              value={bodyText}
-              placeholder="My morning began with a coffee."
-            />
-            <div></div> */}
-            <Button position="absolute" bottom={0} variant="contained" color="secondary" mt={4} type="submit">
-              Share Anonymously
-            </Button>
+                <TextField
+                  id="standard-full-width"
+                  label="Body"
+                  style={{ marginBottom: '2em'}}
+                  placeholder="My morning began with a crepe and a coffee. It was lovely."
+                  fullWidth
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  // height={60}
+                  rowsMin={1}
+                  rowsMax={6}
+                  // variant="filled"
+                  multiline
+                  onChange={e => setBodyText(e.target.value)}
+                  value={bodyText}
+                />
+              </div>
+              <Button bottom={0} variant="contained" color="primary" type="submit">
+                Share Anonymously
+              </Button>
+            </Box>
           </form>
         </Box>
       </ThemeProvider>
