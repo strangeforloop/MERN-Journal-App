@@ -3,36 +3,60 @@ import Form from './Form';
 import AllPosts from './AllPosts';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import { Typography } from '@material-ui/core';
+import DrawerToggleButton from './components/SideDrawer/DrawerToggleButton';
+import './App.css';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#CCD5FF',
-      contrastText: '#FFFFFF'
-    },
-    secondary: {
-      main: '#E7BBE3',
-    },
-  },
-});
+const Container = styled.section`
+  height: 100%;
+  margin: 0 1rem;
 
-const MenuIcon = styled.div`
-
+  @media(min-width: 768px) {
+    margin: 0 2rem;  
+  }
 `;
 
-const Ul = styled.ul`
+const Page = styled.div`
   display: flex;
-  list-style: none;
-  padding: 1em 0;
-  text-decoration: none;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const NavBar = styled.div`
+  width: 100%;
+  position: fixed;
+  height: 60px;
+  background: pink;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+`;
+
+const Navigation = styled.nav`
+  height: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #6068f1;
   font-weight: 700;
 `;
+
+const Main = styled.main`
+  margin-top: 64px;
+  flex: 1;
+`;
+
+const Logo = styled.div`
+  font-size: 1.5em;
+  color: #6068f1;
+  margin-left: 1rem;
+`;
+
+const Placeholder = styled.div`
+  flex: 1;
+`;
+
+// add listener to window resize event - debounce or throttle (lodash)
+// when triggered, update variable
 
 const App = () => {
   const [ data, setData ] = useState([]);
@@ -52,34 +76,34 @@ const App = () => {
   }, []);
 
   return(
-    <ThemeProvider theme={theme}>
-      <Box color="secondary" m={2}>
+      // <nav>
         <Router>
-          <nav>
-            <Ul>
-              <div>
-                <li style={{
-                  fontSize: '1.4em', color: '#6068f1'}}>Anon Journal</li>
-              </div>
-              {/* <Box color="primary" height={38} width={38} borderRadius="50%" display="flex" justifyContent="center" alignItems="center" style={{ backgroundColor: "#6068f1" }}>
-                <i style={{ fontSize: '1.25em' }} class="fas fa-bars"></i>              
-              </Box> */}
-              <div>
-                <Link className="navLink" to="/">home</Link>
-                <Link className="navLink" to="/allposts">all entries</Link>
-                <Link className="navLink" to="/random">random entry</Link>
-              </div>
-            </Ul>
-          </nav>
-          <Switch>
-            <Route path="/allposts">
-              <AllPosts posts={data}/>
-            </Route>
-            <Route path="/" component={Form} />
-          </Switch>    
+          <Page>
+            <NavBar>
+              <Container>
+              <Navigation>
+                <DrawerToggleButton isMobile={true /*add actual var here */} />
+                <Logo>Anon Journal</Logo>
+                <Placeholder />
+                {/* <div>
+                  <Link className="navLink" to="/">home</Link>
+                  <Link className="navLink" to="/allposts">all entries</Link>
+                  <Link className="navLink" to="/">random entry</Link>
+                </div> */}
+              </Navigation>
+              </Container>
+            </NavBar>
+            <Main>
+              <Switch>
+                <Route path="/allposts">
+                  <AllPosts posts={data}/>
+                </Route>
+                <Route path="/" component={Form} />
+              </Switch>  
+            </Main>  
+          </Page>
         </Router>
-      </Box>
-    </ThemeProvider>
+      // </nav>
   );
 }
 

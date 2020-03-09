@@ -2,12 +2,7 @@
   box-sizing: border-box;
   /* background-color: #f8f8ff; */
   /* background-color: grey; */
-  color: #141414;
   /* color: pink; */
-}
-
-body > #root > div {
-  /* height: 100vh; */
 }
 
 .navLink {

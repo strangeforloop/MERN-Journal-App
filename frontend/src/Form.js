@@ -1,66 +1,92 @@
-import React, { useState, useEffect } from 'react';
-import { palette, spacing } from '@material-ui/system';
+import React, { useState } from 'react';
+// import { palette, spacing } from '@material-ui/system';
 import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import AllPosts from './AllPosts';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import { positions, flexbox } from '@material-ui/system';
-import { TextareaAutosize, Typography } from '@material-ui/core';
+// import TextField from '@material-ui/core/TextField';
+// import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+// import AllPosts from './AllPosts';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: { 
-      main: '#CCD5FF',
-      main: '#6068f1',
-      contrastText: '#FFFF'
-    },
-    secondary: {
-      main: '#E7BBE3',
-    },
-  },
-  overrides: {
-    MuiButton: {
-      root: {
-        position: "absolute",
-        bottom: "1em",
-        width: "90%",
-        margin: "auto",
-        padding: "12px",
-        color: "#FFFFFF"
-      }
-    }
-  }
-});
-
-const Heading = styled.h1`
-  font-size: 1.4em;
-  margin-bottom: 1em;
+const FormPage = styled.div`
+  box-sizing: border-box;
+  padding-bottom: 1rem;
+  height: 100%;
 `;
 
-const TitleInput = styled.input`
-    width: 50%;
-    padding: 12px 16px;
-    margin: 0 0 10px;
-    border-radius: 10px;
-    box-shadow: none;
+const Container = styled.section`
+  height: 100%;
+  margin: 0 1rem;
+
+  @media(min-width: 768px) {
+    margin: 0 2rem;  
+  }
+`;
+
+const JournalEntry = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const PageContent = styled.div`
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const DateSection = styled.p`
+  flex: 0;
+`;
+
+const TitleSection = styled.label`
+  flex: 0 1 0;
+  margin-bottom: 1rem;
+`;
+
+const BodySection = styled.label`
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+`;
+
+const TitleInput = styled.textarea`
+  width: 100%;
+  padding: 0;
+  margin: 12px 0 0 0;
+  resize: none;
+  outline: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 600;
+  display: block;
   `;
 
-const BodyInput = styled.input`
-    width: 50%;
-    height: 100px;
-    padding: 12px 16px;
-    margin: 0 0 10px;
-    border-radius: 10px;
-  `;
-
-const SubmitButton = styled.input`
+const BodyInput = styled.textarea`
+    width: 100%;
+    padding: 0;
+    margin: 12px 0;
+    resize: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.15rem;
+    line-height: 1.25rem;
     display: block;
-    padding: 6px 10px;
-    border-radius: 10px;
+    flex: 1;
   `;
+
+const SubmitButton = styled.button`
+  display: block;
+  padding: 15px 10px;
+  border-radius: 5px;
+  background-color: #6068f1;
+  color: white;
+  letter-spacing; 1px;
+  font-size: 1.2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const Form = ({ history }) => {
   let date = new Date();
@@ -68,42 +94,6 @@ const Form = ({ history }) => {
 
   const [title, setTitle] = useState('');
   const [bodyText, setBodyText] = useState('');
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setTitle(e.target.value);
-  //   console.log(e);
-  //   console.log(e.target);
-  //   // setBodyText();
-  // }
-
-  // const tempHandleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setTemp('anna');
-  //   console.log(temp);
-  //   requestToEndpoint();
-  // }
-
-  // const obj = {
-  //   title: 'temp title',
-  //   body: 'temp body'
-  // };
-
-  // const requestToEndpoint = () => {
-  //   console.log('im being called');
-  //   fetch('/post', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(obj)
-  //   }).then((response) => {
-  //     console.log('Success', response.json());
-  //   }).catch((error) => {
-  //     console.log('Error: ', error);
-  //   });
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -116,7 +106,7 @@ const Form = ({ history }) => {
     console.log('im being called');
 
     console.log('date', date);
-    var obj = {
+    const obj = {
       title: title,
       body: bodyText,
       date: date
@@ -138,91 +128,43 @@ const Form = ({ history }) => {
   }
 
   return(
-    // <form onSubmit={handleSubmit}>
-    //   <div>
-    //     <label>Title</label>
-    //     <input type="text" name="title" onChange={() => {setTitle()}}/>
-    //   </div>
-    //   <div>
-    //     <label>What's On Your Mind?</label>
-    //     <input type="text" name="body" onChange={() => {setBodyText()}} />
-    //   </div>
-    //   <input type="submit" value="Submit" />
-    // </form>
+      <FormPage>
+        <Container>
+          <form style={{ height: '100%' }} onSubmit={handleSubmit}>
+            <PageContent>
+              <JournalEntry>
+                <DateSection style={{ fontStyle: 'italic', color: 'grey' }}>      {dateAsString}
+                </DateSection>
 
-      <ThemeProvider theme={theme}>
-        {/* <Heading>What's On Your Mind?</Heading> */}
-        <Box borderRadius={14} height="70vh" width="100%" boxShadow={3} p={2} position="relative">
-          <form onSubmit={handleSubmit}>
-            <Box display="flex" flexDirection="column">
-              <div>
-                <p>{dateAsString}</p>
-                <TextField
-                  id="standard-full-width"
-                  label="Title"
-                  style={{ marginBottom: '2em' }}
-                  placeholder="Today Is A Beautiful Day"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  inputProps={{
-                    style: { fontSize: 30 }
-                  }}
-                  // variant="filled"
-                  // variant="h1"
-                  onChange={e => setTitle(e.target.value)}
-                  value={title}
-                />
+                <TitleSection>
+                  Title
+                  <TitleInput
+                    label="Title"
+                    maxLength="65"
+                    placeholder="Today Is A Beautiful Day"
+                    onChange={e => setTitle(e.target.value)}
+                    value={title}>
+                  </TitleInput>
+                </TitleSection>
 
-                <TextField
-                  id="standard-full-width"
-                  label="Body"
-                  style={{ marginBottom: '2em'}}
-                  placeholder="My morning began with a crepe and a coffee. It was lovely."
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  // height={60}
-                  rowsMin={1}
-                  rowsMax={6}
-                  // variant="filled"
-                  multiline
-                  onChange={e => setBodyText(e.target.value)}
-                  value={bodyText}
-                />
-              </div>
-              <Button bottom={0} variant="contained" color="primary" type="submit">
-                Share Anonymously
-              </Button>
-            </Box>
+                <BodySection>
+                  Body
+                  <BodyInput
+                    label="Body"
+                    placeholder="My morning began with a crepe and a coffee. It was lovely."
+                    rows="12"
+                    onChange={e => setBodyText(e.target.value)}
+                    value={bodyText}>
+                  </BodyInput>
+                </BodySection>
+              </JournalEntry>
+              <SubmitButton type="submit">Share Anonymously</SubmitButton>
+            </PageContent>
           </form>
-        </Box>
-      </ThemeProvider>
-     
-  );
-}
-
-
-
-// > const f = (name) => () => console.log(`hello ${name}`)
-// undefined
-//   > const helloAnna = f('anna')
-// undefined
-//   > helloAnna()
-// hello anna
-// undefined
-//   > const peeter = f('pete')
-// undefined
-//   > peeter
-//   [Function]
-//   > peeter()
-// hello pete
-
-
-// Idea: Auto-generate date
+          {/* </JournalPage> */}
+        </Container>
+      </FormPage>
+  )
+};
 
 export default Form;                    

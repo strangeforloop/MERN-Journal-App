@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import BlogCard from './BlogCard';
-import Button from '@material-ui/core/Button';
 
 const AllPosts = ({posts}) => {
   // const getData = async () => {
