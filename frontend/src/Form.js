@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-// import { palette, spacing } from '@material-ui/system';
 import styled from 'styled-components';
-// import TextField from '@material-ui/core/TextField';
-// import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // import AllPosts from './AllPosts';
 
 const FormPage = styled.div`
@@ -50,7 +47,7 @@ const BodySection = styled.label`
 
 const TitleInput = styled.textarea`
   width: 100%;
-  padding: 0;
+  padding: 0.5rem;
   margin: 12px 0 0 0;
   resize: none;
   outline: none;
@@ -63,13 +60,13 @@ const TitleInput = styled.textarea`
 
 const BodyInput = styled.textarea`
     width: 100%;
-    padding: 0;
+    padding: 0.5rem;
     margin: 12px 0;
     resize: none;
     outline: none;
     background: transparent;
     font-size: 1.15rem;
-    line-height: 1.25rem;
+    line-height: 1.4rem;
     display: block;
     flex: 1;
   `;
@@ -78,10 +75,14 @@ const SubmitButton = styled.button`
   display: block;
   padding: 15px 10px;
   border-radius: 5px;
-  background-color: #6068f1;
   color: white;
-  letter-spacing; 1px;
-  font-size: 1.2rem;
+  letter-spacing: 1px;
+  
+  font-size: 100%;
+  font-family: inherit;
+  border: none;
+
+  background-color: #6068f1;
 
   &:hover {
     cursor: pointer;
@@ -141,6 +142,7 @@ const Form = ({ history }) => {
                   <TitleInput
                     label="Title"
                     maxLength="65"
+                    rows="1"
                     placeholder="Today Is A Beautiful Day"
                     onChange={e => setTitle(e.target.value)}
                     value={title}>
@@ -167,4 +169,4 @@ const Form = ({ history }) => {
   )
 };
 
-export default Form;                    
+export default Form;

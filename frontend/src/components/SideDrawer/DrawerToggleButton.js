@@ -16,6 +16,10 @@ const ToggleButton = styled.button`
   &:hover {
     outline: none;
   }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const ToggleButtonLine = styled.div`
@@ -25,9 +29,9 @@ const ToggleButtonLine = styled.div`
   background-color: #6068f1;
 `;
 
-const DrawerToggleButton = ({ isMobile }) => (
+const DrawerToggleButton = (props) => (
   // <button className="toggle-button" onClick={props.onClick}>
-  <ToggleButton isMobile={isMobile} >
+  <ToggleButton onClick={ props.click } isMobile={true} >
     <ToggleButtonLine></ToggleButtonLine>
     <ToggleButtonLine></ToggleButtonLine>
     <ToggleButtonLine></ToggleButtonLine>

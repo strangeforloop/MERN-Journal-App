@@ -4,10 +4,14 @@ import AllPosts from './AllPosts';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import DrawerToggleButton from './components/SideDrawer/DrawerToggleButton';
+import SideDrawer from './components/SideDrawer/SideDrawer';
+import BackDrop from './components/Backdrop/Backdrop';
 import './App.css';
+import debounce from 'lodash/debounce';
 
 const Container = styled.section`
   height: 100%;
+  width: 100%;
   margin: 0 1rem;
 
   @media(min-width: 768px) {
@@ -16,9 +20,11 @@ const Container = styled.section`
 `;
 
 const Page = styled.div`
+  z-index: 100;
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
 `;
 
 const NavBar = styled.div`
@@ -34,6 +40,7 @@ const NavBar = styled.div`
 
 const Navigation = styled.nav`
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,10 +56,23 @@ const Logo = styled.div`
   font-size: 1.5em;
   color: #6068f1;
   margin-left: 1rem;
+   
+  @media (min-width: 768px) {
+    flex: ;
+    margin: 0;
+  }
 `;
 
 const Placeholder = styled.div`
   flex: 1;
+`;
+
+const NavLinks = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }  
 `;
 
 // add listener to window resize event - debounce or throttle (lodash)
@@ -60,6 +80,8 @@ const Placeholder = styled.div`
 
 const App = () => {
   const [ data, setData ] = useState([]);
+  // const [ windowWidth, setWindowWidth ] = useState(window.innerWidth);
+  const [ isSideMenuOpen, setIsSideMenuOpen ] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -75,21 +97,29 @@ const App = () => {
     getData();
   }, []);
 
+  const buttonClickHandler = () => {
+    console.log('clicked button');
+    console.log('isSideMenuOpen: ', isSideMenuOpen);
+    setIsSideMenuOpen(!isSideMenuOpen);
+  }
+
   return(
       // <nav>
         <Router>
+        <SideDrawer show={isSideMenuOpen} click={buttonClickHandler}/>
+        {/* <BackDrop /> */}
           <Page>
             <NavBar>
               <Container>
               <Navigation>
-                <DrawerToggleButton isMobile={true /*add actual var here */} />
+                <DrawerToggleButton click={buttonClickHandler}/>
                 <Logo>Anon Journal</Logo>
                 <Placeholder />
-                {/* <div>
+                <NavLinks>
                   <Link className="navLink" to="/">home</Link>
                   <Link className="navLink" to="/allposts">all entries</Link>
                   <Link className="navLink" to="/">random entry</Link>
-                </div> */}
+                </NavLinks>
               </Navigation>
               </Container>
             </NavBar>
