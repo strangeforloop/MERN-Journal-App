@@ -52,11 +52,12 @@ const Main = styled.main`
   flex: 1;
 `;
 
-const Logo = styled.div`
+const Logo = styled.a`
   font-size: 1.5em;
   color: #6068f1;
   margin-left: 1rem;
-   
+  text-decoration: none;
+
   @media (min-width: 768px) {
     flex: ;
     margin: 0;
@@ -98,42 +99,40 @@ const App = () => {
   }, []);
 
   const buttonClickHandler = () => {
-    console.log('clicked button');
-    console.log('isSideMenuOpen: ', isSideMenuOpen);
+    // console.log('clicked button');
+    // console.log('isSideMenuOpen: ', isSideMenuOpen);
     setIsSideMenuOpen(!isSideMenuOpen);
   }
 
   return(
-      // <nav>
-        <Router>
-        <SideDrawer show={isSideMenuOpen} click={buttonClickHandler}/>
-        {/* <BackDrop /> */}
-          <Page>
-            <NavBar>
-              <Container>
-              <Navigation>
-                <DrawerToggleButton click={buttonClickHandler}/>
-                <Logo>Anon Journal</Logo>
-                <Placeholder />
-                <NavLinks>
-                  <Link className="navLink" to="/">home</Link>
-                  <Link className="navLink" to="/allposts">all entries</Link>
-                  <Link className="navLink" to="/">random entry</Link>
-                </NavLinks>
-              </Navigation>
-              </Container>
-            </NavBar>
-            <Main>
-              <Switch>
-                <Route path="/allposts">
-                  <AllPosts posts={data}/>
-                </Route>
-                <Route path="/" component={Form} />
-              </Switch>  
-            </Main>  
-          </Page>
-        </Router>
-      // </nav>
+    <Router>
+    <SideDrawer show={isSideMenuOpen} click={buttonClickHandler}/>
+    {/* <BackDrop /> */}
+      <Page>
+        <NavBar>
+          <Container>
+          <Navigation>
+            <DrawerToggleButton click={buttonClickHandler}/>
+            <Logo href="/">Anon Journal</Logo>
+            <Placeholder />
+            <NavLinks>
+              <Link className="navLink" to="/">home</Link>
+              <Link className="navLink" to="/allposts">all entries</Link>
+              <Link className="navLink" to="/">random entry</Link>
+            </NavLinks>
+          </Navigation>
+          </Container>
+        </NavBar>
+        <Main>
+          <Switch>
+            <Route path="/allposts">
+              <AllPosts posts={data}/>
+            </Route>
+            <Route path="/" component={Form} />
+          </Switch>  
+        </Main>  
+      </Page>
+    </Router>
   );
 }
 

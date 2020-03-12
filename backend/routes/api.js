@@ -15,13 +15,13 @@ router.get('/ping', function(req, res) {
 // get the list of blog posts
 router.get('/allposts', async function(req, res, next) {
   // console.log('allposts allposts ');
-  const blogPosts = await BlogPost.find().sort({'date': 'asc'});
+  const blogPosts = await BlogPost.find().sort({'date': 'desc'});
   // console.log(blogPosts);
   res.send(blogPosts);
 });
 
 // add a new blog post to the ~posts endpoint~ db
-router.post('/post', function (req, res) {
+router.post('/entry', function (req, res) {
   // -- the following lines can be replaced by create
   // var blogPost = new BlogPost(req.body);
   // // save the info coming back into the db i the BlogPost collection
@@ -35,6 +35,10 @@ router.post('/post', function (req, res) {
     console.error('Error:', e.message);
     res.status(418).json({ error: "Uh oh. Error."});
   });
+});
+
+router.get('/entry', function (req, res) {
+
 });
 
 router.get('/', function (req, res) {

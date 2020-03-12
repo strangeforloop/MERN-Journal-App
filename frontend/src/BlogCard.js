@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 // import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -24,22 +22,32 @@ const useStyles = makeStyles({
   },
 });
 
+const Card = styled.div`
+  border: 1px solid #d0d0d0;
+  font-family: monospace;
+  margin-bottom: 1.2rem;
+  padding: 0.5rem;
+`;
+
+const Date = styled.div`
+  color: #a29a98;
+`;
+
+const EntryTitle = styled.h2`
+`;
+
+const EntryBody = styled.p`
+
+`;
+
 const BlogCard = ({date, title, body}) => {
   const classes = useStyles();
 
   return(
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {date}
-        </Typography>
-        <Typography variant="h5" component="h2">
-          {title}
-        </Typography>
-        <Typography variant="body2" component="p">
-          {body}
-        </Typography>
-      </CardContent>
+    <Card>
+      <Date>{date}</Date>
+      <EntryTitle>{title}</EntryTitle>
+      <EntryBody>{body.split('\n').map(p => (<p>{p}</p>))}</EntryBody>
     </Card>
   );
 }

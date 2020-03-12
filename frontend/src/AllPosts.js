@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BlogCard from './BlogCard';
+import styled from 'styled-components';
 
-const AllPosts = ({posts}) => {
-  // const getData = async () => {
-  //   const response = await fetch('/allposts', {
-  //     method: 'GET'
-  //   });
+const Container = styled.section`
+  margin: 1rem 1rem;
 
-  //   const data = await response.json();
-  //   console.log(data);
-  // }
+  @media(min-width: 768px) {
+    margin: 1rem 2rem;  
+  }
+`;
 
-  // getData();
+const AllPosts = () => {
+  const [posts, setPosts] = useState([]);
 
-  // console.log('inside allposts component: ', posts);
+  useEffect(() => {
+    const getPosts = async () => {
+      const response = await fetch('/allposts', {
+        method: 'GET'
+      });
+
+      const data = await response.json();
+
+      setPosts(data);
+    }
+
+    getPosts();
+  }, []);
+
+
   console.log('all posts', posts);
 
   // for each item in posts, create a card
@@ -23,10 +37,10 @@ const AllPosts = ({posts}) => {
 
   console.log('posts: ', posts);
   return(
-    <div>
+    <Container>
       {listOfCards}
-    </div>
+    </Container>
   );
 }
 
-export default AllPosts
+export default AllPosts;

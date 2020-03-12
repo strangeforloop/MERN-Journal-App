@@ -8,6 +8,7 @@ const DrawerStyle = styled.div`
   display: ${props => props.open ? 'flex' : 'none'};
   height: 100%;
   width: 70%;
+  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.5);
   background: #ffc0cb;
   background: grey;
   z-index: 200;
@@ -16,6 +17,7 @@ const DrawerStyle = styled.div`
   left: 0;
   max-widtH: 400px;
   flex-direction: column;
+  
 `;
 
 const NavPositionTracker = styled.div`
@@ -96,7 +98,7 @@ const SideDrawer = props => {
       </NavPositionTracker>
       <Links>
         <Li><NavAnchor href="/">Home</NavAnchor></Li>
-        <Li><NavAnchor href="/">All Posts</NavAnchor></Li>
+        <Li><NavAnchor href="/allposts">All Posts</NavAnchor></Li>
         <Li><NavAnchor href="/">Random Post</NavAnchor></Li>
       </Links>
     </DrawerStyle>
