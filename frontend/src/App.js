@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Form from './Form';
 import AllPosts from './AllPosts';
+import RandomPost from './RandomPost';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import DrawerToggleButton from './components/SideDrawer/DrawerToggleButton';
@@ -15,7 +16,11 @@ const Container = styled.section`
   margin: 0 1rem;
 
   @media(min-width: 768px) {
-    margin: 0 2rem;  
+    margin: 0 3rem;  
+  }
+
+  @media(min-width: 1224px) {
+    margin: 0 8rem;  
   }
 `;
 
@@ -118,7 +123,7 @@ const App = () => {
             <NavLinks>
               <Link className="navLink" to="/">home</Link>
               <Link className="navLink" to="/allposts">all entries</Link>
-              <Link className="navLink" to="/">random entry</Link>
+              <Link className="navLink" to="/randompost">random entry</Link>
             </NavLinks>
           </Navigation>
           </Container>
@@ -127,6 +132,9 @@ const App = () => {
           <Switch>
             <Route path="/allposts">
               <AllPosts posts={data}/>
+            </Route>
+            <Route path="/randompost">
+              <RandomPost />
             </Route>
             <Route path="/" component={Form} />
           </Switch>  

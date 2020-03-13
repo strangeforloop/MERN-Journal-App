@@ -8,6 +8,14 @@ const Container = styled.section`
   @media(min-width: 768px) {
     margin: 1rem 2rem;  
   }
+   
+  @media(min-width: 768px) {
+    margin: 1rem 3rem;  
+  }
+
+  @media(min-width: 1224px) {
+    margin: 1rem 8rem;  
+  }
 `;
 
 const AllPosts = () => {
@@ -19,8 +27,9 @@ const AllPosts = () => {
         method: 'GET'
       });
 
+      console.log(response);
       const data = await response.json();
-
+      console.log('data', data);
       setPosts(data);
     }
 

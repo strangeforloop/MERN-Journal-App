@@ -13,7 +13,11 @@ const Container = styled.section`
   margin: 0 1rem;
 
   @media(min-width: 768px) {
-    margin: 0 2rem;  
+    margin: 0 3rem;  
+  }
+
+  @media(min-width: 1224px) {
+    margin: 0 8rem;  
   }
 `;
 
@@ -56,29 +60,30 @@ const TitleInput = styled.textarea`
   line-height: 1.3;
   font-weight: 600;
   display: block;
-  `;
+`;
 
 const BodyInput = styled.textarea`
-    width: 100%;
-    padding: 0.5rem;
-    margin: 12px 0;
-    resize: none;
-    outline: none;
-    background: transparent;
-    font-size: 1.15rem;
-    line-height: 1.4rem;
-    display: block;
-    flex: 1;
-  `;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 12px 0;
+  resize: none;
+  outline: none;
+  background: transparent;
+  font-size: 1.15rem;
+  line-height: 1.4rem;
+  display: block;
+  flex: 1;
+`;
 
 const SubmitButton = styled.button`
   display: block;
-  padding: 15px 10px;
+  padding: 20px 10px;
   border-radius: 5px;
   color: white;
   letter-spacing: 1px;
   
   font-size: 100%;
+  font-size: 1.15rem;
   font-family: inherit;
   border: none;
 
@@ -110,6 +115,7 @@ const Form = ({ history }) => {
     const obj = {
       title: title,
       body: bodyText,
+      // date: dateAsString
       date: date
     }
 
@@ -165,7 +171,6 @@ const Form = ({ history }) => {
               <SubmitButton type="submit">Share Anonymously</SubmitButton>
             </PageContent>
           </form>
-          {/* </JournalPage> */}
         </Container>
       </FormPage>
   )

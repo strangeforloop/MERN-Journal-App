@@ -38,6 +38,20 @@ router.post('/entry', function (req, res) {
 });
 
 router.get('/entry', function (req, res) {
+  // Get count of all blog posts
+  BlogPost.count().exec(async function (err, count) {
+    // Get a random number out of this count
+    var random = Math.floor(Math.random() * count);
+
+    // Query db using random
+    const journalEntry = await BlogPost.findOne().skip(random).exec(
+      function(err, result) {
+        console.log('result: ', result);
+        res.send(result);
+    });
+    // console.log('thing being sent back:', journalEntry);
+    // res.send(journalEntry);
+  });
 
 });
 

@@ -8,7 +8,6 @@ const DrawerStyle = styled.div`
   display: ${props => props.open ? 'flex' : 'none'};
   height: 100%;
   width: 70%;
-  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.5);
   background: #ffc0cb;
   background: grey;
   z-index: 200;
@@ -68,30 +67,13 @@ const NavAnchor = styled.a`
   font-size: 1.2rem;
   font-weight: 500;
   margin-top: 1rem;
+  
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 const SideDrawer = props => {
-  // let drawerClasses = 'side-drawer';
-  // if (props.show) {
-  //   drawerClasses = 'side-drawer open';
-  // }
-  // return(
-  //   <nav className={drawerClasses}>
-  //     <ul>
-  //       <li><a href="/">Products</a></li>
-  //       <li><a href="/">Users</a></li>
-  //     </ul>
-  //   </nav>
-  // );
-  // const [isOpen, setIsOpen] = useState(false);
-
-  const handleCloseButtonClick = () => {
-    // setIsOpen(false);
-    // console.log(isOpen);
-    // console.log('close was clicked');
-  }
-
   return (
-    // <DrawerStyle isMobile={props.show}>
     <DrawerStyle open={props.show}>
       <NavPositionTracker>
         <CloseButton onClick={props.click}><i class="fas fa-times fa-2x"></i></CloseButton>
@@ -99,7 +81,7 @@ const SideDrawer = props => {
       <Links>
         <Li><NavAnchor href="/">Home</NavAnchor></Li>
         <Li><NavAnchor href="/allposts">All Posts</NavAnchor></Li>
-        <Li><NavAnchor href="/">Random Post</NavAnchor></Li>
+        <Li><NavAnchor href="/randompost">Random Post</NavAnchor></Li>
       </Links>
     </DrawerStyle>
   );
