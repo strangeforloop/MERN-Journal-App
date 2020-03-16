@@ -51,12 +51,13 @@ const BodySection = styled.label`
 
 const TitleInput = styled.textarea`
   width: 100%;
+  color: #333;
   padding: 0.5rem;
   margin: 12px 0 0 0;
   resize: none;
   outline: none;
+  font-size: 1.265625rem;
   background: transparent;
-  font-size: 1.5rem;
   line-height: 1.3;
   font-weight: 600;
   display: block;
@@ -64,12 +65,13 @@ const TitleInput = styled.textarea`
 
 const BodyInput = styled.textarea`
   width: 100%;
+  color: #333;
   padding: 0.5rem;
   margin: 12px 0;
   resize: none;
   outline: none;
+  font-size: 16px;
   background: transparent;
-  font-size: 1.15rem;
   line-height: 1.4rem;
   display: block;
   flex: 1;
@@ -81,9 +83,8 @@ const SubmitButton = styled.button`
   border-radius: 5px;
   color: white;
   letter-spacing: 1px;
-  
   font-size: 100%;
-  font-size: 1.15rem;
+  font-size: 1.125rem;
   font-family: inherit;
   border: none;
 
@@ -142,11 +143,11 @@ const Form = ({ history }) => {
           <form style={{ height: '100%' }} onSubmit={handleSubmit}>
             <PageContent>
               <JournalEntry>
-                <DateSection style={{ fontStyle: 'italic', color: 'grey' }}>      {dateAsString}
+              <DateSection style={{ color: '#6c6c6c' }}>      {dateAsString}
                 </DateSection>
 
                 <TitleSection>
-                  Title
+                  <div style={{fontSize: '0.88875rem'}}>Title</div>
                   <TitleInput
                     label="Title"
                     maxLength="65"
@@ -158,7 +159,7 @@ const Form = ({ history }) => {
                 </TitleSection>
 
                 <BodySection>
-                  Body
+                  <div style={{ fontSize: '0.88875rem' }}>Body</div>
                   <BodyInput
                     label="Body"
                     placeholder="My morning began with a crepe and a coffee. It was lovely."

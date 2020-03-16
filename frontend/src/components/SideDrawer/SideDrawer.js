@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import './SideDrawer.css';
 
@@ -64,8 +64,8 @@ const Icon = styled.i`
 const NavAnchor = styled.a`
   color: white;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.1rem;
   margin-top: 1rem;
   
   &:hover {
@@ -76,7 +76,7 @@ const SideDrawer = props => {
   return (
     <DrawerStyle open={props.show}>
       <NavPositionTracker>
-        <CloseButton onClick={props.click}><i class="fas fa-times fa-2x"></i></CloseButton>
+        <CloseButton onClick={props.click}><i className="fas fa-times fa-2x"></i></CloseButton>
       </NavPositionTracker>
       <Links>
         <Li><NavAnchor href="/">Home</NavAnchor></Li>

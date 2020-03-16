@@ -58,7 +58,7 @@ const Main = styled.main`
 `;
 
 const Logo = styled.a`
-  font-size: 1.5em;
+  font-size: 1.476875rem;
   color: #6068f1;
   margin-left: 1rem;
   text-decoration: none;
