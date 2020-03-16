@@ -36,6 +36,8 @@ const PageContent = styled.div`
 
 const DateSection = styled.p`
   flex: 0;
+  color: #6c6c6c;
+  font-size: 1.125rem;
 `;
 
 const TitleSection = styled.label`
@@ -143,11 +145,11 @@ const Form = ({ history }) => {
           <form style={{ height: '100%' }} onSubmit={handleSubmit}>
             <PageContent>
               <JournalEntry>
-              <DateSection style={{ color: '#6c6c6c' }}>      {dateAsString}
-                </DateSection>
+
+              <DateSection> {dateAsString}</DateSection>
 
                 <TitleSection>
-                  <div style={{fontSize: '0.88875rem'}}>Title</div>
+                <div style={{ fontSize: '0.88875rem', fontWeight: '600'}}>Title</div>
                   <TitleInput
                     label="Title"
                     maxLength="65"
@@ -159,7 +161,7 @@ const Form = ({ history }) => {
                 </TitleSection>
 
                 <BodySection>
-                  <div style={{ fontSize: '0.88875rem' }}>Body</div>
+                <div style={{ fontSize: '0.88875rem', fontWeight: '600' }}>Body</div>
                   <BodyInput
                     label="Body"
                     placeholder="My morning began with a crepe and a coffee. It was lovely."

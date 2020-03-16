@@ -57,10 +57,6 @@ const Li = styled.li`
   padding: 0.5rem 0;
 `;
 
-const Icon = styled.i`
-  font-size: 1.1rem;
-`;
-
 const NavAnchor = styled.a`
   color: white;
   text-decoration: none;

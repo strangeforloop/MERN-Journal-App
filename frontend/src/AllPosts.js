@@ -40,11 +40,15 @@ const AllPosts = () => {
   console.log('all posts', posts);
 
   // for each item in posts, create a card
-  const listOfCards = posts.map((post) => {
-    return <BlogCard key={post._id} date={post.date} title={post.title} body={post.body} />
+  const listOfCards = posts.map((entry) => {    
+    // change epoch into readable date
+    var readableDate = new Date(entry.date);
+    var readableDateString = String(readableDate);
+
+    return <BlogCard key={entry._id} date={readableDateString} title={entry.title} body={entry.body} />
   }); 
 
-  console.log('posts: ', posts);
+  // console.log('posts: ', posts);
   return(
     <Container>
       {listOfCards}

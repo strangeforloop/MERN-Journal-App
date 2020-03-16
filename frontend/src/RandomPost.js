@@ -18,23 +18,6 @@ const Container = styled.section`
   }
 `;
 
-const Card = styled.div`
-  border: 1px solid #d0d0d0;
-  font-family: monospace;
-  margin-bottom: 1.2rem;
-  padding: 0.5rem;
-`;
-
-const Date = styled.div`
-  color: #a29a98;
-`;
-
-const EntryTitle = styled.h2`
-`;
-
-const EntryBody = styled.p`
-`;
-
 const RandomPost = () => {
   const [entry, setEntry] = useState('');
 
@@ -56,20 +39,18 @@ const RandomPost = () => {
   }, []);
 
   // handle initial case when body is "" and there is no body to parse
-  var bodyText;
-  if (entry.body === undefined) {
-    bodyText = null;
-  } else {
-    bodyText = entry.body.split('\n').map(p => (<p>{p}</p>));
-  }
+  // var bodyText;
+  // if (entry.body === undefined) {
+  //   bodyText = null;
+  // } else {
+  //   bodyText = entry.body.split('\n').map(p => (<p>{p}</p>));
+  // }
+  var readableDate = new Date(entry.date);
+  var readableDateString = String(readableDate);
 
   return (
     <Container>
-      <Card>
-        <Date>{entry.date}</Date>
-        <EntryTitle>{entry.title}</EntryTitle>
-        <EntryBody>{bodyText}</EntryBody>
-      </Card>  
+      <BlogCard key={entry._id} date={readableDateString} title={entry.title} body={entry.body} />
     </Container>
   );
 }
