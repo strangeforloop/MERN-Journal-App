@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// import AllPosts from './AllPosts';
 
 const FormPage = styled.div`
   box-sizing: border-box;
@@ -106,8 +105,8 @@ const Form = ({ history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('hello');
-    console.log({ title, bodyText });
+    
+    // console.log({ title, bodyText });
     storePostInDatabase();
   }
 
@@ -118,7 +117,6 @@ const Form = ({ history }) => {
     const obj = {
       title: title,
       body: bodyText,
-      // date: dateAsString
       date: date
     }
 
@@ -153,6 +151,7 @@ const Form = ({ history }) => {
                   <TitleInput
                     label="Title"
                     maxLength="65"
+                    required
                     rows="1"
                     placeholder="Today Is A Beautiful Day"
                     onChange={e => setTitle(e.target.value)}
@@ -164,6 +163,7 @@ const Form = ({ history }) => {
                 <div style={{ fontSize: '0.88875rem', fontWeight: '600' }}>Body</div>
                   <BodyInput
                     label="Body"
+                    required
                     placeholder="My morning began with a crepe and a coffee. It was lovely."
                     rows="12"
                     onChange={e => setBodyText(e.target.value)}
