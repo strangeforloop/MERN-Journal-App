@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const BlogPost = require('./database/models/blogPost');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/bananas', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bananas', { useNewUrlParser: true });
 
 // import express from 'express';
 const app = express();
@@ -40,7 +40,7 @@ app.use(routes);
   //   console.log(req.body);
 // });
 
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // function testRequest(req, res) {
 //   res.send('ping pong');
@@ -66,6 +66,11 @@ const port = 4000;
 
 function listeningSuccess() {
   console.log('I started listening');
+}
+
+// if on heroku
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../frontend/build'));
 }
 
 // listens for any type of requests

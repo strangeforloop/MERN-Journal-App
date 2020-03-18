@@ -2,7 +2,10 @@
   "version": "1.0.0", "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --experimental-modules index.js"
+    "start": "nodemon --experimental-modules index.js",
+    "build": "cd ../frontend && npm run build",
+    "install-client": "cd ../frontend && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build"
   },
   "author": "",
   "license": "ISC",
