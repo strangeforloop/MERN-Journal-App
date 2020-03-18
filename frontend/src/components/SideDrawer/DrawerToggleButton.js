@@ -30,7 +30,6 @@ const ToggleButtonLine = styled.div`
 `;
 
 const DrawerToggleButton = (props) => (
-  // <button className="toggle-button" onClick={props.onClick}>
   <ToggleButton onClick={ props.click } isMobile={true} >
     <ToggleButtonLine></ToggleButtonLine>
     <ToggleButtonLine></ToggleButtonLine>

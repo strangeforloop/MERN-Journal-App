@@ -23,13 +23,10 @@ const RandomPost = () => {
 
   useEffect(() => {
     const getRandomPost = async () => {
-      console.log('rendering random post');
-
       const response = await fetch('/entry', {
         method: 'GET'
       });
 
-      console.log('response is: ', response);
       const data = await response.json();
       console.log(data);
       setEntry(data);
@@ -38,13 +35,6 @@ const RandomPost = () => {
     getRandomPost();
   }, []);
 
-  // handle initial case when body is "" and there is no body to parse
-  // var bodyText;
-  // if (entry.body === undefined) {
-  //   bodyText = null;
-  // } else {
-  //   bodyText = entry.body.split('\n').map(p => (<p>{p}</p>));
-  // }
   var readableDate = new Date(entry.date);
   var readableDateString = String(readableDate);
 

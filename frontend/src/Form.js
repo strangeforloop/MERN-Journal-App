@@ -128,11 +128,9 @@ const Form = ({ history }) => {
       },
       body: JSON.stringify(obj)
     }).then(async (response) => {
-      // if error in back end e.g. response from db is bad 
       console.log('Success: ', await response.json());
-      history.push('/allposts');    // this is not related to api, just React Router
+      history.push('/allposts');
     }).catch((error) => {
-      // if fetch fails
       console.log('Error: ', error);
     });
   }

@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import DrawerToggleButton from './components/SideDrawer/DrawerToggleButton';
 import SideDrawer from './components/SideDrawer/SideDrawer';
-// import BackDrop from './components/Backdrop/Backdrop';
 import './App.css';
 
 const Container = styled.section`
