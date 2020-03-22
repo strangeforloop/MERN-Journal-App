@@ -40,6 +40,10 @@ app.use(routes);
   //   console.log(req.body);
 // });
 
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "../frontend/build/index.html"));
+// });
+
 const port = process.env.PORT || 4000;
 
 // function testRequest(req, res) {
@@ -65,6 +69,7 @@ const port = process.env.PORT || 4000;
 // app.post('/posts', handlePostRequests);
 
 function listeningSuccess() {
+  console.log('Server is running on port: ', port);
   console.log('I started listening');
 }
 
@@ -75,3 +80,12 @@ if (process.env.NODE_ENV === 'production') {
 
 // listens for any type of requests
 app.listen(port, listeningSuccess);
+
+// package.json start script
+// "start": "nodemon --experimental-modules index.js",
+
+
+// "start": "node index.js && echo \"23432423423424\" && npm run heroku-postbuild",
+//   "build": "echo \"running build. . . .\" && cd ../frontend && npm run build",
+//     "install-client": "echo \"Running install-client . . . .\" && cd ../frontend && npm install",
+//       "heroku-postbuild": "echo \"HELLOOOOOOO postbuild\" && cd ../frontend && npm run install-client && npm run build"
