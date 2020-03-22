@@ -45,6 +45,6 @@ router.get('/entry', function (req, res) {
 
 // router.get('/', function (req, res) {
 //   res.send({ requestType: 'GET' });
-// });
+// });  
 
 module.exports = router;
