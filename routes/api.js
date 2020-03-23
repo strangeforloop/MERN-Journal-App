@@ -9,7 +9,7 @@ router.get('/ping', function(req, res) {
 });
 
 router.get('/allposts', async function(req, res, next) {
-  // console.log('allposts allposts ');
+  console.log('allposts allposts ');
   const blogPosts = await BlogPost.find().sort({'date': 'desc'});
   // console.log(blogPosts);
   res.send(blogPosts);
